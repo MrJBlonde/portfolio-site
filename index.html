@@ -7,23 +7,24 @@
 <meta name="description" content="Portfolio de Julien Gauthier, Data Analyst en trajectoire Analytics Engineer. Projets, pipelines data et infrastructures.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#FAF6EE;
-    --bg-alt:#F3EDDF;
+    --bg-alt:#F1EADA;
     --surface:#FFFFFF;
-    --rule:#E6DDC8;
-    --rule-soft:#EDE6D4;
-    --ink:#221F1A;
-    --ink-muted:#59523F;
-    --ink-faint:#78725E;
-    --sage:#6F8F76;
+    --rule:#E2D8C0;
+    --rule-soft:#ECE3D0;
+    --ink:#211E19;
+    --ink-muted:#57503F;
+    --ink-faint:#78715C;
     --sage-deep:#3E5C46;
+    --green:#1F7A4D;
     --gold:#A67D38;
-    --blue:#48678F;
-    --blue-bg:#E8EEF5;
-    --max:1120px;
+    --gold-bg:#F5EAD3;
+    --blue:#3E6690;
+    --blue-bg:#E4EBF2;
+    --max:1360px;
   }
 
   *{box-sizing:border-box;}
@@ -46,507 +47,226 @@
     letter-spacing:-0.01em;
     color:var(--ink);
   }
-
-  .mono{
-    font-family:'IBM Plex Mono',monospace;
-  }
-
+  .mono{font-family:'IBM Plex Mono',monospace;}
   a{color:inherit;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 40px;}
 
-  .wrap{
-    max-width:var(--max);
-    margin:0 auto;
-    padding:0 32px;
-  }
-
-  /* ---------- NAV ---------- */
+  /* ================= NAV ================= */
   header.nav{
-    position:sticky;
-    top:0;
-    z-index:50;
-    background:rgba(250,246,238,0.90);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--rule-soft);
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,246,238,0.94);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--rule);
   }
   .nav-inner{
-    max-width:var(--max);
-    margin:0 auto;
-    padding:20px 32px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+    max-width:var(--max);margin:0 auto;padding:18px 40px;
+    display:flex;align-items:center;justify-content:space-between;
   }
-  .nav-name{
-    font-family:'Work Sans',sans-serif;
-    font-size:18px;
-    font-weight:600;
+  .nav-brand{display:flex;align-items:center;gap:10px;}
+  .nav-mark{
+    width:30px;height:30px;border-radius:8px;
+    background:linear-gradient(135deg,var(--sage-deep),var(--green));
+    color:#FAF6EE;display:flex;align-items:center;justify-content:center;
+    font-family:'Work Sans',sans-serif;font-weight:700;font-size:14px;flex-shrink:0;
   }
-  .nav-links{
-    display:flex;
-    gap:32px;
-    font-size:14.5px;
-  }
+  .nav-name{font-family:'Work Sans',sans-serif;font-size:17px;font-weight:600;}
+  .nav-links{display:flex;gap:6px;font-size:14px;}
   .nav-links a{
-    text-decoration:none;
-    color:var(--ink-muted);
-    transition:color .15s ease;
+    text-decoration:none;color:var(--ink-muted);font-weight:500;
+    padding:8px 16px;border-radius:999px;transition:color .15s,background .15s;
   }
-  .nav-links a:hover{color:var(--sage-deep);}
-
-  .nav-contact{
-    display:flex;
-    align-items:center;
-    gap:20px;
-    font-size:14px;
-  }
-  .nav-contact a{
-    text-decoration:none;
-    color:var(--ink-muted);
-    transition:color .15s ease;
-  }
+  .nav-links a:hover{color:var(--ink);background:var(--bg-alt);}
+  .nav-contact{display:flex;align-items:center;gap:22px;font-size:14px;}
+  .nav-contact a{text-decoration:none;color:var(--ink-muted);font-weight:500;transition:color .15s;}
   .nav-contact a:hover{color:var(--sage-deep);}
-  .nav-contact a.nav-cta{
-    background:var(--sage-deep);
-    color:#FAF6EE;
-    padding:9px 16px;
-    border-radius:999px;
-    font-weight:500;
-    font-size:13.5px;
-  }
-  .nav-contact a.nav-cta:hover{
-    opacity:0.9;
-    color:#FAF6EE;
-  }
 
-  /* ---------- HERO ---------- */
+  /* ================= HERO ================= */
   .hero{
-    padding:80px 0 76px;
-    border-bottom:1px solid var(--rule-soft);
+    padding:84px 0;
+    background:var(--bg-alt);
+    border-bottom:1px solid var(--rule);
   }
-  .hero h1{
-    font-size:clamp(32px,4.6vw,48px);
-    line-height:1.2;
-    max-width:20ch;
-    font-weight:600;
+  .hero-layout{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:center;}
+  .hero-eyebrow{
+    font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--sage-deep);margin-bottom:20px;
   }
-  .hero h1 .accent{
-    color:#1F7A4D;
-    font-weight:700;
-  }
-  .hero-sub{
-    margin-top:24px;
-    font-size:17px;
-    color:var(--ink-muted);
-    max-width:62ch;
-    line-height:1.75;
-  }
-  .hero-meta{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:32px;
-  }
+  .hero h1{font-size:clamp(34px,4.3vw,52px);line-height:1.14;font-weight:600;}
+  .hero h1 .accent{color:var(--green);}
+  .hero-sub{margin-top:22px;font-size:17px;color:var(--ink-muted);max-width:60ch;line-height:1.75;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
   .pill{
-    font-size:13.5px;
-    padding:8px 15px;
-    background:var(--surface);
-    border:1px solid var(--rule);
-    border-radius:999px;
-    color:var(--ink-muted);
-  }
-  .pill.live{
-    color:var(--sage-deep);
-    border-color:#CFE0D1;
-    background:#F1F7F1;
-    font-weight:500;
+    font-size:13.5px;padding:8px 15px;background:var(--surface);
+    border:1px solid var(--rule);border-radius:999px;color:var(--ink-muted);
   }
 
-  /* ---------- SECTION LABEL ---------- */
-  .section{
-    padding:92px 0;
-    border-bottom:1px solid var(--rule-soft);
+  .cert-panel{
+    background:var(--surface);border:1px solid var(--rule);border-radius:16px;
+    padding:26px 24px;box-shadow:0 3px 14px rgba(33,30,25,0.06);
   }
-  .section-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:24px;
-    margin-bottom:48px;
-    flex-wrap:wrap;
+  .cert-panel-head{
+    font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;
+    color:var(--ink-faint);margin-bottom:14px;
   }
-  .section-tag{
-    font-size:13px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:var(--ink-faint);
-    font-weight:600;
+  .cert-row{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:12px 14px;margin-bottom:8px;
+    border-left:3px solid var(--rule);
+    background:var(--bg);border-radius:6px;
   }
-  .section-head h2{
-    font-size:44px;
-    margin-top:0;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:0.01em;
+  .cert-row:last-child{margin-bottom:0;}
+  .cert-row.cat-ml{border-left-color:var(--gold);background:var(--gold-bg);}
+  .cert-row.cat-viz{border-left-color:var(--blue);background:var(--blue-bg);}
+  .cert-row.cat-data{border-left-color:var(--sage-deep);background:#E7F0E9;}
+  .cert-name{font-size:15px;font-weight:600;color:var(--ink);}
+  .cert-provider{font-size:12.5px;color:var(--ink-faint);}
+
+  .hero-panel{
+    background:var(--surface);border:1px solid var(--rule);border-radius:16px;
+    padding:22px;box-shadow:0 3px 14px rgba(33,30,25,0.06);
   }
-  .section-note{
-    font-size:15px;
-    color:var(--ink-muted);
-    max-width:32ch;
-    text-align:right;
-    line-height:1.6;
+  .hero-panel-row{
+    display:grid;grid-template-columns:56px 1fr;align-items:center;gap:16px;
+    padding:11px 0;
+  }
+  .hero-panel-n{
+    font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:700;color:var(--green);
+    width:56px;height:56px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--bg-alt);border:1px solid var(--rule);border-radius:10px;
+  }
+  .hero-panel-l{
+    font-size:14px;color:var(--ink-muted);line-height:1.55;
+    border:1px solid var(--rule-soft);border-radius:8px;
+    padding:12px 14px;background:var(--bg);
   }
 
-  /* ---------- CASE STUDY (Data Engineering) ---------- */
-  .case{
-    background:var(--surface);
-    border:1px solid var(--rule);
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 1px 2px rgba(43,40,35,0.04);
-  }
-  .case.dom-data{border-top:4px solid var(--sage-deep);}
-  .case.dom-ml{border-top:4px solid var(--gold);}
-  .side-case{
-    margin-top:28px;
-  }
-  .case-top{
-    padding:38px 44px 34px;
-    background:linear-gradient(180deg,var(--bg-alt) 0%,var(--surface) 100%);
-    border-bottom:1px solid var(--rule-soft);
-  }
-  .case-badges{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-bottom:20px;
-  }
-  .badge{
-    font-size:12px;
-    padding:6px 13px;
-    border-radius:999px;
-    font-weight:600;
-    letter-spacing:0.02em;
-    border:1px solid var(--rule);
-    color:var(--ink-muted);
-    background:var(--surface);
-  }
-  .badge.confidential{
-    color:var(--ink);
-    border-color:#D8CDAE;
-  }
-  .badge.status{
-    color:var(--ink-muted);
-  }
-  .case-top h3{
-    font-size:36px;
-    margin-bottom:10px;
-    font-weight:700;
-    letter-spacing:-0.01em;
-    line-height:1.15;
-  }
-  .case-top .client{
-    color:var(--ink-muted);
-    font-size:16.5px;
-  }
-  .case-body{
-    padding:38px 44px;
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:48px;
-  }
-  .case-col h4{
-    font-size:21px;
-    text-transform:none;
-    letter-spacing:0;
-    color:var(--sage-deep);
-    margin-bottom:16px;
-    font-weight:700;
-  }
-  .case-col p{
-    font-size:16.5px;
-    color:var(--ink-muted);
-    margin:0 0 22px;
-    line-height:1.8;
-  }
-  .flow{
-    display:flex;
-    flex-direction:column;
-    gap:0;
-  }
-  .flow-step{
-    display:grid;
-    grid-template-columns:96px 1fr;
-    gap:16px;
-    padding:14px 0;
-    border-bottom:1px solid var(--rule-soft);
-  }
-  .flow-step:last-child{border-bottom:none;}
-  .flow-step .tag{
-    font-size:13.5px;
-    color:var(--gold);
-    text-transform:uppercase;
-    letter-spacing:0.05em;
-    padding-top:2px;
-    font-weight:700;
-  }
-  .flow-step .desc{
-    font-size:14.5px;
-    color:var(--ink-muted);
-    line-height:1.6;
-  }
-  .flow-step .desc strong{color:var(--ink);font-weight:600;}
+  @media (max-width:900px){.hero-layout{grid-template-columns:1fr;gap:36px;}}
 
-  .case-img{
-    padding:0 44px 44px;
-  }
-  .case-img img{
-    width:100%;
-    display:block;
-    border-radius:10px;
-    border:1px solid var(--rule);
-  }
-
-  .stack-row{
-    padding:30px 44px;
-    border-top:1px solid var(--rule-soft);
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .tag-chip{
-    font-size:13px;
-    padding:6px 13px;
-    background:#F7EFDD;
-    border-radius:999px;
-    color:var(--gold);
-    font-weight:500;
-  }
-  .tag-chip.cat-viz{
-    background:var(--blue-bg);
-    color:var(--blue);
-  }
-  .tag-chip.cat-data{
-    background:#EAF1EA;
-    color:var(--sage-deep);
-  }
-
-  .legend-bar{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:20px;
-    font-size:12px;
-    color:var(--ink-faint);
-  }
+  /* ================= LEGEND ================= */
+  .legend-band{background:var(--surface);border-bottom:1px solid var(--rule-soft);padding:20px 0;}
+  .legend-inner{display:flex;flex-wrap:wrap;align-items:center;gap:12px;}
+  .legend-label{font-size:12.5px;font-weight:600;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-right:6px;}
+  .legend-bar{display:flex;flex-wrap:wrap;gap:10px;}
   .legend-bar span{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
+    display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;
+    padding:7px 14px;border-radius:999px;
   }
-  .legend-bar span::before{
-    content:"";
-    width:6px;height:6px;
-    border-radius:50%;
-    display:inline-block;
-  }
+  .legend-bar span::before{content:"";width:8px;height:8px;border-radius:50%;display:inline-block;}
+  .legend-bar .l-ml{background:var(--gold-bg);color:var(--gold);}
   .legend-bar .l-ml::before{background:var(--gold);}
+  .legend-bar .l-viz{background:var(--blue-bg);color:var(--blue);}
   .legend-bar .l-viz::before{background:var(--blue);}
+  .legend-bar .l-data{background:#E7F0E9;color:var(--sage-deep);}
   .legend-bar .l-data::before{background:var(--sage-deep);}
 
-  .domain-tag{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    font-size:11.5px;
-    text-transform:uppercase;
-    letter-spacing:0.05em;
-    font-weight:700;
-    margin-bottom:10px;
-  }
-  .domain-tag::before{
-    content:"";
-    width:6px;height:6px;
-    border-radius:50%;
-    display:inline-block;
-  }
-  .domain-tag.ml{color:var(--gold);}
-  .domain-tag.ml::before{background:var(--gold);}
-  .domain-tag.viz{color:var(--blue);}
-  .domain-tag.viz::before{background:var(--blue);}
-  .domain-tag.data{color:var(--sage-deep);}
-  .domain-tag.data::before{background:var(--sage-deep);}
+  /* ================= SECTION SHELL ================= */
+  .section{padding:88px 0;}
+  .section.alt{background:var(--bg-alt);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:44px;flex-wrap:wrap;}
+  .section-head h2{font-size:32px;font-weight:700;text-transform:uppercase;letter-spacing:0.01em;}
+  .section-note{font-size:15px;color:var(--ink-muted);max-width:36ch;}
 
-  .result-line{
-    margin:0 44px 34px;
-    padding:20px 24px;
-    background:var(--bg-alt);
-    border-left:3px solid var(--gold);
-    border-radius:6px;
-    font-size:14.5px;
-    color:var(--ink);
-    line-height:1.7;
-  }
-  .result-line .label{
-    display:block;
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:0.06em;
-    color:var(--sage-deep);
-    font-weight:600;
-    margin-bottom:6px;
-  }
-  .result-line strong{color:var(--ink);font-weight:600;}
+  /* ================= CASE STUDY ================= */
+  .case{background:var(--surface);border:1px solid var(--rule);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(33,30,25,0.05);}
+  .case.dom-data{border-top:4px solid var(--sage-deep);}
+  .case + .case{margin-top:28px;}
 
-  /* ---------- GRID (Data Analyst) ---------- */
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
+  .case-top{padding:38px 44px 30px;background:linear-gradient(180deg,var(--bg-alt) 0%,var(--surface) 100%);border-bottom:1px solid var(--rule-soft);position:relative;}
+  .case-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;align-items:center;}
+  .badge{font-size:12.5px;padding:6px 13px;border-radius:999px;font-weight:600;border:1px solid var(--rule);color:var(--ink-muted);background:var(--surface);}
+  .badge.status{color:var(--sage-deep);}
+
+  .stamp{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+    color:#A5433C;border:1.5px solid #A5433C;border-radius:4px;padding:6px 12px;
+    transform:rotate(-2deg);
   }
+  .stamp::before{content:"●";font-size:8px;}
+
+  .case-top h3{font-size:32px;font-weight:700;margin-bottom:10px;line-height:1.16;}
+  .case-top .client{color:var(--ink-muted);font-size:15.5px;}
+
+  .case-body{padding:36px 44px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:46px;}
+  .case-col h4{font-size:18px;font-weight:700;color:var(--sage-deep);margin-bottom:14px;}
+  .case-col p{font-size:15.5px;color:var(--ink-muted);margin:0 0 20px;line-height:1.75;}
+
+  .flow{display:flex;flex-direction:column;}
+  .flow-step{display:grid;grid-template-columns:96px 1fr;gap:16px;padding:13px 0;border-bottom:1px solid var(--rule-soft);}
+  .flow-step:last-child{border-bottom:none;}
+  .flow-step .tag{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--gold);text-transform:uppercase;font-weight:600;padding-top:2px;}
+  .flow-step .desc{font-size:14.5px;color:var(--ink-muted);line-height:1.6;}
+  .flow-step .desc strong{color:var(--ink);font-weight:600;}
+
+  .case-img{padding:0 44px 40px;}
+  .case-img img{width:100%;display:block;border-radius:10px;border:1px solid var(--rule);}
+
+  .result-line{margin:0 44px 32px;padding:18px 22px;background:var(--bg-alt);border-left:3px solid var(--green);border-radius:6px;font-size:15px;color:var(--ink);line-height:1.7;}
+  .result-line .label{display:block;font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--sage-deep);font-weight:600;margin-bottom:7px;}
+  .result-line strong{color:var(--ink);font-weight:700;}
+
+  .stack-row{padding:26px 44px;border-top:1px solid var(--rule-soft);display:flex;flex-wrap:wrap;gap:8px;}
+  .tag-chip{font-size:12.5px;padding:6px 13px;border-radius:999px;font-weight:500;}
+  .tag-chip.cat-ml{background:var(--gold-bg);color:var(--gold);}
+  .tag-chip.cat-viz{background:var(--blue-bg);color:var(--blue);}
+  .tag-chip.cat-data{background:#E7F0E9;color:var(--sage-deep);}
+
+  /* ================= GRID (Data Analyst) ================= */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
   .card{
-    background:var(--surface);
-    border:1px solid var(--rule);
-    border-radius:14px;
-    padding:32px 30px 28px;
-    display:flex;
-    flex-direction:column;
-    transition:box-shadow .15s ease, border-color .15s ease;
+    background:var(--surface);border:1px solid var(--rule);border-radius:12px;
+    padding:28px 28px 24px 26px;display:flex;flex-direction:column;
+    border-left-width:4px;border-left-style:solid;
+    transition:box-shadow .15s ease, transform .15s ease;
   }
-  .card:hover{
-    box-shadow:0 4px 14px rgba(43,40,35,0.06);
-    border-color:#D8CDAE;
-  }
-  .card-num{
-    font-size:12px;
-    color:var(--ink-faint);
-    font-weight:600;
-    letter-spacing:0.06em;
-    margin-bottom:12px;
-  }
-  .card h3{
-    font-size:19px;
-    font-weight:600;
-    line-height:1.35;
-    margin-bottom:12px;
-  }
-  .card p{
-    font-size:15.5px;
-    color:var(--ink-muted);
-    margin:0 0 24px;
-    flex-grow:1;
-    line-height:1.75;
-  }
-  .card-stack{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-    padding-top:18px;
-    border-top:1px solid var(--rule-soft);
-  }
-  .card-stack span{
-    font-size:11.5px;
-    padding:4px 10px;
-    border-radius:999px;
-    background:#F7EFDD;
-    color:var(--gold);
-    font-weight:500;
-  }
-  .card-stack span.cat-viz{
-    background:var(--blue-bg);
-    color:var(--blue);
-  }
-  .card-stack span.cat-data{
-    background:#EAF1EA;
-    color:var(--sage-deep);
-  }
+  .card:hover{box-shadow:0 6px 18px rgba(33,30,25,0.07);transform:translateY(-1px);}
+  .card.cat-ml{border-left-color:var(--gold);}
+  .card.cat-viz{border-left-color:var(--blue);}
+  .card.cat-data{border-left-color:var(--sage-deep);}
 
-  /* ---------- CONTACT / FOOTER ---------- */
-  .contact{
-    padding:92px 0 64px;
-  }
-  .contact-top{
-    padding:56px 0 64px;
-    border-bottom:1px solid var(--rule-soft);
-  }
-  .contact h2{
-    font-size:36px;
-    max-width:16ch;
-    margin-bottom:22px;
-    font-weight:400;
-  }
-  .contact p{
-    color:var(--ink-muted);
-    max-width:48ch;
-    margin-bottom:40px;
-    font-size:16px;
-    line-height:1.7;
-  }
-  .contact-links{
-    display:flex;
-    flex-wrap:wrap;
-    gap:14px;
-  }
+  .card-domain{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;}
+  .card.cat-ml .card-domain{color:var(--gold);}
+  .card.cat-viz .card-domain{color:var(--blue);}
+  .card.cat-data .card-domain{color:var(--sage-deep);}
+
+  .card h3{font-size:19px;font-weight:600;line-height:1.32;margin-bottom:12px;}
+  .card p{font-size:15px;color:var(--ink-muted);margin:0 0 22px;flex-grow:1;line-height:1.7;}
+  .card-stack{display:flex;flex-wrap:wrap;gap:6px;padding-top:16px;border-top:1px solid var(--rule-soft);}
+  .card-stack span{font-size:12.5px;padding:5px 11px;border-radius:999px;font-weight:500;background:var(--bg-alt);color:var(--ink-faint);}
+  .card.cat-ml .card-stack span{background:var(--gold-bg);color:var(--gold);}
+  .card.cat-viz .card-stack span{background:var(--blue-bg);color:var(--blue);}
+  .card.cat-data .card-stack span{background:#E7F0E9;color:var(--sage-deep);}
+
+  /* ================= CONTACT ================= */
+  .contact{padding:80px 0;}
+  .contact h2{font-size:34px;max-width:16ch;margin-bottom:20px;font-weight:700;}
+  .contact p{color:var(--ink-muted);max-width:48ch;margin-bottom:34px;font-size:16px;line-height:1.7;}
+  .contact-links{display:flex;flex-wrap:wrap;gap:14px;}
   .contact-links a{
-    font-size:14.5px;
-    text-decoration:none;
-    padding:13px 22px;
-    border:1px solid var(--rule);
-    border-radius:999px;
-    color:var(--ink);
-    background:var(--surface);
-    transition:border-color .15s ease, background .15s ease;
+    font-size:14.5px;text-decoration:none;padding:13px 22px;border-radius:999px;
+    font-weight:500;transition:opacity .15s ease;
   }
-  .contact-links a:hover{
-    border-color:var(--sage);
-    background:#F1F7F1;
-  }
-  .contact-links a.primary{
-    background:var(--sage-deep);
-    border-color:var(--sage-deep);
-    color:#FAF6EE;
-    font-weight:500;
-  }
-  .contact-links a.primary:hover{opacity:0.92;background:var(--sage-deep);}
+  .contact-links a.primary{background:var(--sage-deep);color:#FAF6EE;}
+  .contact-links a.primary:hover{opacity:0.9;}
 
-  footer{
-    padding:30px 0 44px;
-    border-top:1px solid var(--rule-soft);
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:12px;
-    font-size:13px;
-    color:var(--ink-faint);
-  }
+  footer{padding:26px 0 40px;border-top:1px solid var(--rule-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink-faint);}
 
-  /* ---------- SCROLL REVEAL ---------- */
-  .reveal{
-    opacity:0;
-    transform:translateY(14px);
-    transition:opacity .6s ease, transform .6s ease;
-  }
-  .reveal.in{
-    opacity:1;
-    transform:translateY(0);
-  }
-  @media (prefers-reduced-motion: reduce){
-    .reveal{opacity:1;transform:none;transition:none;}
-    html{scroll-behavior:auto;}
-  }
+  /* ================= REVEAL ================= */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
 
-  /* ---------- RESPONSIVE ---------- */
+  /* ================= RESPONSIVE ================= */
   @media (max-width:860px){
     .wrap,.nav-inner{padding-left:20px;padding-right:20px;}
-    .hero{padding:64px 0 48px;}
+    .hero{padding:56px 0;}
     .case-body{grid-template-columns:1fr;}
     .grid{grid-template-columns:1fr;}
     .nav-links{display:none;}
-    .nav-contact a:not(.nav-cta){display:none;}
     .section-head{flex-direction:column;}
-    .section-note{text-align:left;}
-    .case-top,.case-body,.stack-row{padding-left:24px;padding-right:24px;}
-    .result-line{margin-left:24px;margin-right:24px;}
-    .case-img{padding-left:24px;padding-right:24px;}
+    .case-top,.case-body,.stack-row,.case-img{padding-left:22px;padding-right:22px;}
+    .result-line{margin-left:22px;margin-right:22px;}
   }
 </style>
 </head>
@@ -554,9 +274,12 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <div class="nav-name">Julien Gauthier</div>
+    <div class="nav-brand">
+      <div class="nav-mark">JG</div>
+      <div class="nav-name">Julien Gauthier</div>
+    </div>
     <nav class="nav-links">
-      <a href="#data-scientist">Data Engineering</a>
+      <a href="#data-engineering">Data Engineering</a>
       <a href="#data-analyst">Data Analyst</a>
     </nav>
     <div class="nav-contact">
@@ -566,242 +289,222 @@
   </div>
 </header>
 
-<main class="wrap">
+<main>
 
   <!-- HERO -->
   <section class="hero">
-    <h1>Data Analyst <span class="accent">& Analytics Engineer</span>.</h1>
-    <p class="hero-sub">
-      Data Analyst, avec pour objectif de devenir Analytics Engineer. La curiosité est le point de départ de mon travail : passionné d'échecs et de résolution d'enquêtes, j'ai appris à repérer le détail qui ne colle pas, à anticiper la suite logique d'un problème et à ne jamais conclure sans preuve. J'applique cette même rigueur à chaque jeu de données. Et comme Columbo, j'ai toujours une dernière question avant de conclure.
-    </p>
-    <div class="hero-meta">
-      <span class="pill">Orléans · France</span>
-    </div>
-  </section>
+    <div class="wrap">
+      <div class="hero-layout">
+        <div>
+          <div class="hero-eyebrow">Portfolio — Data Analyst / Analytics Engineer</div>
+          <h1>Data Analyst <span class="accent">&amp; Analytics Engineer</span>.</h1>
+          <p class="hero-sub">
+            Data Analyst, avec pour objectif de devenir Analytics Engineer. La curiosité est le point de départ de mon travail : passionné d'échecs et de résolution d'enquêtes, j'ai appris à repérer le détail qui ne colle pas, à anticiper la suite logique d'un problème et à ne jamais conclure sans preuve. J'applique cette même rigueur à chaque jeu de données. Et comme Columbo, j'ai toujours une dernière question avant de conclure.
+          </p>
+          <div class="hero-meta">
+            <span class="pill">Orléans · France</span>
+          </div>
+        </div>
 
-  <section class="contact reveal contact-top" id="contact">
-    <h2>Discutons de votre besoin en données.</h2>
-    <p>Ouvert à toute opportunité data : poste, mission ou projet, en Data Analyst comme en Analytics Engineer.</p>
-    <div class="contact-links">
-      <a href="mailto:pro.gauthier.julien@gmail.com" class="primary">pro.gauthier.julien@gmail.com</a>
-    </div>
-  </section>
-
-  <!-- DATA SCIENTIST -->
-  <section class="section" id="data-scientist">
-    <div class="section-head reveal">
-      <div>
-        <h2>Data Engineering</h2>
+        <div class="cert-panel">
+          <div class="cert-panel-head">Mes prochaines certifications</div>
+          <div class="cert-row cat-ml"><span class="cert-name">Python Intermediate</span><span class="cert-provider">HackerRank</span></div>
+          <div class="cert-row cat-viz"><span class="cert-name">PL-300</span><span class="cert-provider">Power BI</span></div>
+          <div class="cert-row cat-data"><span class="cert-name">SQL Advanced</span><span class="cert-provider">HackerRank</span></div>
+          <div class="cert-row cat-data"><span class="cert-name">DP-600</span><span class="cert-provider">Microsoft Fabric</span></div>
+          <div class="cert-row cat-data"><span class="cert-name">Analytics Engineering</span><span class="cert-provider">dbt</span></div>
+          <div class="cert-row"><span class="cert-name">PSM I</span><span class="cert-provider">Scrum.org</span></div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- LEGEND -->
+  <div class="legend-band">
+    <div class="wrap legend-inner">
+      <span class="legend-label">Domaines</span>
       <div class="legend-bar">
         <span class="l-ml">Analyse &amp; machine learning</span>
         <span class="l-viz">Visualisation &amp; restitution</span>
         <span class="l-data">Ingénierie des données</span>
       </div>
     </div>
+  </div>
 
-    <div class="case dom-data reveal">
-      <div class="case-top">
-        <div class="case-badges">
-          <span class="badge confidential">🔒 Code confidentiel — projet client</span>
-          <span class="badge status">En production</span>
-        </div>
-        <div class="domain-tag data">Ingénierie des données</div>
-        <h3>Labyrinthe de Beaugency</h3>
-        <div class="client">The FearIndustry · mission freelance · infrastructure data from scratch</div>
+  <!-- DATA ENGINEERING -->
+  <section class="section alt" id="data-engineering">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Data Engineering</h2>
+        <p class="section-note">Un projet client en production, et un projet personnel mené avec la même rigueur.</p>
       </div>
 
-      <div class="case-body">
-        <div class="case-col">
-          <h4>Le défi</h4>
-          <p>
-            Aucune infrastructure data existante pour ce site événementiel en plein air. Mandaté en autonomie totale, l'objectif était de donner aux gérants des chiffres fiables pour décider eux-mêmes, sans recommandation automatique imposée.
-          </p>
-          <h4>Compétences mobilisées</h4>
-          <p>
-            Architecture de données · pipelines ETL automatisés · intégration d'APIs externes · modélisation prédictive · compatibilité multi-SGBD · déploiement d'interfaces · supervision de production.
-          </p>
+      <div class="case dom-data reveal">
+        <div class="case-top">
+          <div class="case-badges">
+            <span class="stamp">Pièce confidentielle</span>
+            <span class="badge status">En production</span>
+          </div>
+          <h3>Labyrinthe de Beaugency</h3>
+          <div class="client">The FearIndustry · mission freelance · infrastructure data from scratch</div>
         </div>
 
-        <div class="case-col">
-          <h4>Architecture</h4>
-          <div class="flow">
-            <div class="flow-step">
-              <div class="tag">Bronze</div>
-              <div class="desc">Collecte automatisée <strong>météo, hydrométrie de la Loire, billetterie, bar</strong> via API</div>
-            </div>
-            <div class="flow-step">
-              <div class="tag">Silver</div>
-              <div class="desc"><strong>Indice de fatigue visiteur, 14 alertes à seuils, scores de confort</strong> et d'affluence</div>
-            </div>
-            <div class="flow-step">
-              <div class="tag">Gold</div>
-              <div class="desc">Modèle <strong>Random Forest</strong> — affluence et CA prédits de J+1 à J+5</div>
-            </div>
-            <div class="flow-step">
-              <div class="tag">Restitution</div>
-              <div class="desc">Interface <strong>Streamlit</strong> utilisée par les gérants, <strong>watchdog</strong> de supervision</div>
+        <div class="case-body">
+          <div class="case-col">
+            <h4>Le défi</h4>
+            <p>Aucune infrastructure data existante pour ce site événementiel en plein air. Mandaté en autonomie totale, l'objectif était de donner aux gérants des chiffres fiables pour décider eux-mêmes, sans recommandation automatique imposée.</p>
+            <h4>Compétences mobilisées</h4>
+            <p>Architecture de données, pipelines ETL automatisés, intégration d'APIs externes, modélisation prédictive, compatibilité multi-SGBD, déploiement d'interfaces, supervision de production.</p>
+          </div>
+          <div class="case-col">
+            <h4>Architecture</h4>
+            <div class="flow">
+              <div class="flow-step"><div class="tag">Bronze</div><div class="desc">Collecte automatisée <strong>météo, hydrométrie de la Loire, billetterie, bar</strong> via API</div></div>
+              <div class="flow-step"><div class="tag">Silver</div><div class="desc"><strong>Indice de fatigue visiteur, 14 alertes à seuils, scores de confort</strong> et d'affluence</div></div>
+              <div class="flow-step"><div class="tag">Gold</div><div class="desc">Modèle <strong>Random Forest</strong> — affluence et CA prédits de J+1 à J+5</div></div>
+              <div class="flow-step"><div class="tag">Restitution</div><div class="desc">Interface <strong>Streamlit</strong>, <strong>watchdog</strong> de supervision continue</div></div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="case-img">
-        <img src="architecture-labyrinthe.png" alt="Schéma d'architecture data du Labyrinthe de Beaugency : sources externes, serveur Debian, data lake MariaDB, transformation pandas, modèle scikit-learn, restitution Grafana et Streamlit">
-      </div>
-
-      <div class="result-line">
-        <span class="label">Résultat</span>
-        <strong>8/8 modules</strong> exécutés chaque matin en <strong>24 secondes</strong> · <strong>9 tables</strong> en production · supervision continue (watchdog) · système utilisé aujourd'hui par les gérants
-      </div>
-
-      <div class="stack-row">
-        <span class="tag-chip cat-ml">Python</span>
-        <span class="tag-chip cat-data">Pandas</span>
-        <span class="tag-chip cat-ml">Scikit-learn</span>
-        <span class="tag-chip cat-ml">NumPy / SciPy</span>
-        <span class="tag-chip cat-viz">Streamlit</span>
-        <span class="tag-chip cat-data">MariaDB</span>
-        <span class="tag-chip cat-data">PostgreSQL</span>
-        <span class="tag-chip cat-data">Cron</span>
-        <span class="tag-chip cat-data">Debian / SSH</span>
-        <span class="tag-chip cat-data">Nginx</span>
-        <span class="tag-chip cat-data">Open-Meteo API</span>
-        <span class="tag-chip cat-data">Hubeau / Vigicrues</span>
-      </div>
-    </div>
-
-    <div class="case side-case dom-data reveal">
-      <div class="case-top">
-        <div class="case-badges">
-          <span class="badge status">Projet personnel · Open source</span>
-          <span class="badge confidential">En cours</span>
-        </div>
-        <div class="domain-tag data">Ingénierie des données</div>
-        <h3>Chess Meta Analytics</h3>
-        <div class="client">Facilite l'accès aux infinies ouvertures d'échecs</div>
-      </div>
-
-      <div class="case-body">
-        <div class="case-col">
-          <h4>Le concept</h4>
-          <p>
-            Une tier list des ouvertures d'échecs, pensée comme un jeu vidéo compétitif : classement par winrate et pickrate, quelle ouverture bat quelle autre, et un niveau de difficulté par profil de joueur. Aucun outil existant (Lichess, Chess.com) n'aborde les échecs sous cet angle.
-          </p>
-          <h4>Pourquoi ce projet</h4>
-          <p>
-            Répondre à une problématique concrète de joueur : le temps et la difficulté à apprendre les ouvertures. Une façon de prolonger ma passion pour les échecs dans un vrai projet data, cadré avant la première ligne de code : architecture, jalons et structure de repository pensés comme en entreprise.
-          </p>
+        <div class="case-img">
+          <img src="architecture-labyrinthe.png" alt="Schéma d'architecture data du Labyrinthe de Beaugency : sources externes, serveur Debian, data lake MariaDB, transformation pandas, modèle scikit-learn, restitution Grafana et Streamlit">
         </div>
 
-        <div class="case-col">
-          <h4>Jalons prévus</h4>
-          <div class="flow">
-            <div class="flow-step">
-              <div class="tag">J1</div>
-              <div class="desc"><strong>Pipeline + tier list</strong> — collecte Lichess, PostgreSQL, dashboard Streamlit</div>
-            </div>
-            <div class="flow-step">
-              <div class="tag">J2</div>
-              <div class="desc"><strong>DBT</strong> — counters, comparateur, filtres par niveau de jeu</div>
-            </div>
-            <div class="flow-step">
-              <div class="tag">J3</div>
-              <div class="desc"><strong>API</strong> — FastAPI, fiches d'ouverture détaillées</div>
-            </div>
-            <div class="flow-step">
-              <div class="tag">J4</div>
-              <div class="desc">Fonctions avancées — classement mensuel, favoris, FR/EN</div>
+        <div class="result-line">
+          <span class="label">Résultat</span>
+          <strong>8/8 modules</strong> exécutés chaque matin en <strong>24 secondes</strong> · <strong>9 tables</strong> en production · système utilisé aujourd'hui par les gérants
+        </div>
+
+        <div class="stack-row">
+          <span class="tag-chip cat-data">Python</span>
+          <span class="tag-chip cat-data">Pandas</span>
+          <span class="tag-chip cat-ml">Scikit-learn</span>
+          <span class="tag-chip cat-data">NumPy / SciPy</span>
+          <span class="tag-chip cat-viz">Streamlit</span>
+          <span class="tag-chip cat-data">MariaDB</span>
+          <span class="tag-chip cat-data">PostgreSQL</span>
+          <span class="tag-chip cat-data">Cron</span>
+          <span class="tag-chip cat-data">Debian / SSH</span>
+          <span class="tag-chip cat-data">Nginx</span>
+        </div>
+      </div>
+
+      <div class="case dom-data reveal">
+        <div class="case-top">
+          <div class="case-badges">
+            <span class="badge">Projet personnel · Open source</span>
+            <span class="badge status">En cours</span>
+          </div>
+          <h3>Chess Meta Analytics</h3>
+          <div class="client">Facilite l'accès aux infinies ouvertures d'échecs</div>
+        </div>
+
+        <div class="case-body">
+          <div class="case-col">
+            <h4>Le concept</h4>
+            <p>Une tier list des ouvertures d'échecs, pensée comme un jeu vidéo compétitif : classement par winrate et pickrate, quelle ouverture bat quelle autre, et un niveau de difficulté par profil de joueur. Aucun outil existant n'aborde les échecs sous cet angle.</p>
+            <h4>Pourquoi ce projet</h4>
+            <p>Répondre à une problématique concrète de joueur : le temps et la difficulté à apprendre les ouvertures. Une façon de prolonger ma passion pour les échecs dans un vrai projet data, cadré avant la première ligne de code.</p>
+          </div>
+          <div class="case-col">
+            <h4>Jalons prévus</h4>
+            <div class="flow">
+              <div class="flow-step"><div class="tag">J1</div><div class="desc"><strong>Pipeline + tier list</strong> — collecte Lichess, PostgreSQL, dashboard Streamlit</div></div>
+              <div class="flow-step"><div class="tag">J2</div><div class="desc"><strong>DBT</strong> — counters, comparateur, filtres par niveau de jeu</div></div>
+              <div class="flow-step"><div class="tag">J3</div><div class="desc"><strong>API</strong> — FastAPI, fiches d'ouverture détaillées</div></div>
+              <div class="flow-step"><div class="tag">J4</div><div class="desc">Fonctions avancées — classement mensuel, favoris, FR/EN</div></div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="stack-row">
-        <span class="tag-chip cat-ml">Python</span>
-        <span class="tag-chip cat-data">PostgreSQL</span>
-        <span class="tag-chip cat-data">DBT</span>
-        <span class="tag-chip cat-data">FastAPI</span>
-        <span class="tag-chip cat-viz">Streamlit</span>
-        <span class="tag-chip cat-data">Lichess API</span>
+        <div class="stack-row">
+          <span class="tag-chip cat-data">Python</span>
+          <span class="tag-chip cat-data">PostgreSQL</span>
+          <span class="tag-chip cat-data">DBT</span>
+          <span class="tag-chip cat-data">FastAPI</span>
+          <span class="tag-chip cat-viz">Streamlit</span>
+          <span class="tag-chip cat-data">Lichess API</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- DATA ANALYST -->
   <section class="section" id="data-analyst">
-    <div class="section-head reveal">
-      <div>
+    <div class="wrap">
+      <div class="section-head reveal">
         <h2>Data Analyst</h2>
-      </div>
-      <p class="section-note">8 projets, du SQL au machine learning, qui construisent les fondations.</p>
-    </div>
-
-    <div class="grid reveal">
-
-      <div class="card">
-        <div class="domain-tag ml">Machine learning</div>
-        <h3>Bottleneck — pipeline augmenté par l'IA</h3>
-        <p>Amélioration d'une analyse de ventes existante grâce à l'IA : les erreurs sont détectées automatiquement et les ventes manquantes mieux estimées.</p>
-        <div class="card-stack"><span class="cat-ml">Python</span><span class="cat-ml">Scikit-learn</span><span class="cat-ml">SHAP</span><span class="cat-ml">Pandera</span></div>
+        <p class="section-note">8 projets, du SQL au machine learning, qui construisent les fondations.</p>
       </div>
 
-      <div class="card">
-        <div class="domain-tag ml">Machine learning</div>
-        <h3>Détection de faux billets</h3>
-        <p>Un algorithme qui détecte les faux billets à partir de leurs mesures physiques, réglé pour n'en laisser passer aucun.</p>
-        <div class="card-stack"><span class="cat-ml">Python</span><span class="cat-ml">Scikit-learn</span><span class="cat-ml">Random Forest</span></div>
-      </div>
+      <div class="grid reveal">
 
-      <div class="card">
-        <div class="domain-tag ml">Machine learning</div>
-        <h3>Étude de marché — export international</h3>
-        <p>Identification des pays les plus prometteurs pour exporter un produit, à partir de données économiques et sociales de 126 pays.</p>
-        <div class="card-stack"><span class="cat-ml">Python</span><span class="cat-ml">ACP</span><span class="cat-ml">K-Means / CAH</span></div>
-      </div>
+        <div class="card cat-ml">
+          <div class="card-domain">Machine learning</div>
+          <h3>Bottleneck — pipeline augmenté par l'IA</h3>
+          <p>Amélioration d'une analyse de ventes existante grâce à l'IA : les erreurs sont détectées automatiquement et les ventes manquantes mieux estimées.</p>
+          <div class="card-stack"><span>Python</span><span>Scikit-learn</span><span>SHAP</span><span>Pandera</span></div>
+        </div>
 
-      <div class="card">
-        <div class="domain-tag viz">Visualisation</div>
-        <h3>Accès à l'eau potable — DWFA</h3>
-        <p>Un tableau de bord qui aide une ONG à choisir où investir en priorité pour améliorer l'accès à l'eau potable.</p>
-        <div class="card-stack"><span class="cat-viz">Power BI</span><span class="cat-viz">DAX</span><span class="cat-ml">Python</span></div>
-      </div>
+        <div class="card cat-ml">
+          <div class="card-domain">Machine learning</div>
+          <h3>Détection de faux billets</h3>
+          <p>Un algorithme qui détecte les faux billets à partir de leurs mesures physiques, réglé pour n'en laisser passer aucun.</p>
+          <div class="card-stack"><span>Python</span><span>Scikit-learn</span><span>Random Forest</span></div>
+        </div>
 
-      <div class="card">
-        <div class="domain-tag ml">Analyse statistique</div>
-        <h3>Librairie Lapage — bilan des ventes</h3>
-        <p>Analyse des ventes d'une librairie en ligne pour comprendre qui achète quoi, et pourquoi.</p>
-        <div class="card-stack"><span class="cat-ml">Python</span><span class="cat-ml">Scipy</span><span class="cat-ml">Tests statistiques</span></div>
-      </div>
+        <div class="card cat-ml">
+          <div class="card-domain">Machine learning</div>
+          <h3>Étude de marché — export international</h3>
+          <p>Identification des pays les plus prometteurs pour exporter un produit, à partir de données économiques et sociales de 126 pays.</p>
+          <div class="card-stack"><span>Python</span><span>ACP</span><span>K-Means / CAH</span></div>
+        </div>
 
-      <div class="card">
-        <div class="domain-tag data">Ingénierie des données</div>
-        <h3>Profil sociodémographique — DBT</h3>
-        <p>Un pipeline automatisé qui suit, chaque année, l'évolution du profil des étudiants en formation data.</p>
-        <div class="card-stack"><span class="cat-data">DBT Cloud</span><span class="cat-data">Snowflake</span><span class="cat-data">SQL</span></div>
-      </div>
+        <div class="card cat-viz">
+          <div class="card-domain">Visualisation</div>
+          <h3>Accès à l'eau potable — DWFA</h3>
+          <p>Un tableau de bord qui aide une ONG à choisir où investir en priorité pour améliorer l'accès à l'eau potable.</p>
+          <div class="card-stack"><span>Power BI</span><span>DAX</span><span>Python</span></div>
+        </div>
 
-      <div class="card">
-        <div class="domain-tag viz">Visualisation</div>
-        <h3>Pilotage de portefeuille de projets</h3>
-        <p>Un tableau de bord qui suit en temps réel les coûts, les délais et les retards d'un ensemble de projets.</p>
-        <div class="card-stack"><span class="cat-viz">Power BI</span><span class="cat-viz">DAX</span><span class="cat-viz">KPI</span></div>
-      </div>
+        <div class="card cat-ml">
+          <div class="card-domain">Analyse statistique</div>
+          <h3>Librairie Lapage — bilan des ventes</h3>
+          <p>Analyse des ventes d'une librairie en ligne pour comprendre qui achète quoi, et pourquoi.</p>
+          <div class="card-stack"><span>Python</span><span>Scipy</span><span>Tests statistiques</span></div>
+        </div>
 
-      <div class="card">
-        <div class="domain-tag data">Ingénierie des données</div>
-        <h3>Base de données immobilière — DataImmo</h3>
-        <p>Une base de données immobilière interrogeable en SQL pour analyser les prix de vente partout en France.</p>
-        <div class="card-stack"><span class="cat-data">SQL</span><span class="cat-data">SQLite</span><span class="cat-data">Modélisation 3NF</span></div>
-      </div>
+        <div class="card cat-data">
+          <div class="card-domain">Ingénierie des données</div>
+          <h3>Profil sociodémographique — DBT</h3>
+          <p>Un pipeline automatisé qui suit, chaque année, l'évolution du profil des étudiants en formation data.</p>
+          <div class="card-stack"><span>DBT Cloud</span><span>Snowflake</span><span>SQL</span></div>
+        </div>
 
+        <div class="card cat-viz">
+          <div class="card-domain">Visualisation</div>
+          <h3>Pilotage de portefeuille de projets</h3>
+          <p>Un tableau de bord qui suit en temps réel les coûts, les délais et les retards d'un ensemble de projets.</p>
+          <div class="card-stack"><span>Power BI</span><span>DAX</span><span>KPI</span></div>
+        </div>
+
+        <div class="card cat-data">
+          <div class="card-domain">Ingénierie des données</div>
+          <h3>Base de données immobilière — DataImmo</h3>
+          <p>Une base de données immobilière interrogeable en SQL pour analyser les prix de vente partout en France.</p>
+          <div class="card-stack"><span>SQL</span><span>SQLite</span><span>Modélisation 3NF</span></div>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <footer>
-    <span>Julien Gauthier — Data Analyst / Analytics Engineer</span>
-    <span>Orléans, France</span>
+    <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;">
+      <span>Julien Gauthier — Data Analyst / Analytics Engineer</span>
+      <span><a href="mailto:pro.gauthier.julien@gmail.com" style="color:var(--ink-faint);text-decoration:none;">pro.gauthier.julien@gmail.com</a> · Orléans, France</span>
+    </div>
   </footer>
 
 </main>
@@ -811,12 +514,9 @@
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
     revealEls.forEach(el => io.observe(el));
   } else {
     revealEls.forEach(el => el.classList.add('in'));
